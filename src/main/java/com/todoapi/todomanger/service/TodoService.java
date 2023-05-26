@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -20,6 +21,7 @@ public class TodoService {
     public Todo createTodo(Todo todo){
         int id= rand.nextInt((int)1e8);
         todo.setTodoId(id);
+        todo.setCreationDate(new Date());
         todoDB.add(todo);
         logger.info("added todo"+todo );
         return todo;
