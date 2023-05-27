@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.todoapi.todomanger.model.Todo;
+
+import java.sql.SQLOutput;
 import java.util.*;
 @RestController
 @RequestMapping("/todos")
@@ -45,5 +47,11 @@ public class TodoController {
     public ResponseEntity<String> deleteTodo(@PathVariable int todoID){
         todoService.deleteTodo(todoID);
         return ResponseEntity.ok("Successfully deleted");
+    }
+    @ExceptionHandler(NullPointerException.class)
+    public String nullptrExceptionHandler(NullPointerException exp){
+        System.out.println(exp.getMessage());
+        System.out.println("got null ptr exception");
+        return "null ptr exception";
     }
 }
