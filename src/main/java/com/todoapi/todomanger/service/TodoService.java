@@ -1,11 +1,14 @@
 package com.todoapi.todomanger.service;
 
+import com.todoapi.todomanger.exceptions.ResourceNotFoundException;
 import com.todoapi.todomanger.model.Todo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import java.lang.module.ResolutionException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,7 +35,9 @@ public class TodoService {
 
     public Todo getTodoWithID(int todoID) {
         Todo t1= todoDB.stream().filter(todo -> todoID==todo.getTodoId())
-                .findAny().get();
+                .findAny()
+                .orElseThrow(()-> new
+                        ResourceNotFoundException("Todo Not found", HttpStatus.NOT_FOUND));
         logger.info("todo is"+t1);
         return t1;
     }

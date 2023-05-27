@@ -48,10 +48,13 @@ public class TodoController {
         todoService.deleteTodo(todoID);
         return ResponseEntity.ok("Successfully deleted");
     }
-    @ExceptionHandler(NullPointerException.class)
+    //handling exception way 1
+    /*@ExceptionHandler(NullPointerException.class)
     public String nullptrExceptionHandler(NullPointerException exp){
         System.out.println(exp.getMessage());
         System.out.println("got null ptr exception");
         return "null ptr exception";
-    }
+    }*/
+
+    //handling excpetion standard way
 }
