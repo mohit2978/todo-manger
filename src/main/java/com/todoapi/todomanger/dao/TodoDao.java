@@ -54,7 +54,7 @@ public class TodoDao {
     public List<Todo> getAllTodo(){
         String query="Select * from todomanager.todo";
         List<Todo> todo=jdbcTemplate.query(query,
-                new BeanPropertyRowMapper<Todo>(Todo.class));
+                new CustomRowMapper());
         return todo;
     }
 
