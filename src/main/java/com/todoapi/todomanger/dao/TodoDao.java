@@ -58,13 +58,13 @@ public class TodoDao {
         return todo;
     }
 
-    public Todo updateTodo(Todo todo){
+    public Todo updateTodo(int id,Todo todo){
         String query="Update todomanager.todo set title=?,content=?," +
                 "status=?,tododate=?,creationdate=?" +
                 "where id=?";
         int rowAfftected=jdbcTemplate.update(query,new Object[]{todo.getTitle(),
                 todo.getContent(),todo.getStatus(),
-                todo.getTodoDate(),todo.getCreationDate(),todo.getTodoId()});
+                todo.getTodoDate(),todo.getCreationDate(),id});
         logger.info("Rows Affected {} ",rowAfftected);
         return todo;
     }

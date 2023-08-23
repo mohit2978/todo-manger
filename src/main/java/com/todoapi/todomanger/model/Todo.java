@@ -19,7 +19,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class Todo {
     @Id
-    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int todoId;
     private String title;
     private String content;
