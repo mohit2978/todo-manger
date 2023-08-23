@@ -1,22 +1,29 @@
 package com.todoapi.todomanger.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Repository;
 
+
+import java.time.LocalTime;
 import java.util.Date;
 
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Todo {
+    @Id
+    @Column(name="id")
     private int todoId;
     private String title;
     private String content;
-    private String status;
+    private Boolean status;
     @JsonFormat(pattern = "dd/mm/yyyy")
     private Date todoDate;
     private Date creationDate;
